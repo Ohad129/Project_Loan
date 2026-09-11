@@ -1,5 +1,11 @@
 # Loan Approval Checker
 
+## Live demo
+https://project-loan-s3ef.onrender.com/
+
+(Hosted on Render's free tier — the first request after a period of inactivity
+can take 30-60 seconds to wake up.)
+
 ## Setup
 ```
 pip install -r requirements.txt
