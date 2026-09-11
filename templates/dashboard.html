@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Approval Checker — Model Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-nav">
+    <a class="brand" href="/">Loan Approval Checker</a>
+    <nav>
+      <a href="/" class="active">Model dashboard</a>
+      <a href="/apply">Check eligibility</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <h1>What the model learned</h1>
+    <p>A Support Vector Classifier trained on applicant financial data, predicting whether a loan gets approved. This page shows what went into training it and how well it performs.</p>
+  </div>
+
+  <div id="error-slot"></div>
+
+  <div class="grid cols-4" id="metric-cards"></div>
+
+  <div class="grid cols-2">
+    <div class="panel">
+      <h3>Decision boundary</h3>
+      <div class="sub">Test set projected to 2 dimensions with PCA, colored by actual outcome</div>
+      <svg id="boundary-chart" viewBox="0 0 480 320"></svg>
+    </div>
+
+    <div class="panel">
+      <h3>Confusion matrix</h3>
+      <div class="sub">Predicted vs. actual outcomes on the test set</div>
+      <div id="cm-slot"></div>
+    </div>
+  </div>
+
+  <div class="grid cols-2">
+    <div class="panel">
+      <h3>Model details</h3>
+      <div class="sub">Configuration used to train this pipeline</div>
+      <div class="kv-list" id="info-slot"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Features used</h3>
+      <div class="sub" id="feature-sub"></div>
+      <div class="feature-tags" id="feature-slot"></div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top: 20px;">
+    <h3>Dataset samples</h3>
+    <div class="sub">A few rows from the training data, before encoding</div>
+    <div class="table-scroll">
+      <table id="samples-table"></table>
+    </div>
+  </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Approval Checker — Check Eligibility</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-nav">
+    <a class="brand" href="/">Loan Approval Checker</a>
+    <nav>
+      <a href="/">Model dashboard</a>
+      <a href="/apply" class="active">Check eligibility</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <h1>Check loan eligibility</h1>
+    <p>Enter the applicant's details below. The model will predict whether this loan would be approved, based on patterns in historical loan data.</p>
+  </div>
+
+  <div class="panel form-panel" style="margin-top: 28px;">
+    <form id="loan-form">
+      <div class="field-row">
+        <div class="field">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="Age" min="18" max="100" value="30" required>
+        </div>
+        <div class="field">
+          <label for="credit-score">Credit score</label>
+          <input type="number" id="credit-score" name="Credit Score" min="300" max="850" value="650" required>
+          <div class="hint">Range 300–850</div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="income">Annual income ($)</label>
+          <input type="number" id="income" name="Person Income" min="0" step="500" value="55000" required>
+        </div>
+        <div class="field">
+          <label for="loan-amount">Requested loan amount ($)</label>
+          <input type="number" id="loan-amount" name="Loan Amount" min="500" step="100" value="10000" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="interest-rate">Loan interest rate (%)</label>
+          <input type="number" id="interest-rate" name="Loan interest Rate" min="0" max="30" step="0.1" value="11" required>
+        </div>
+        <div class="field">
+          <label for="home-ownership">Home ownership</label>
+          <select id="home-ownership" name="Home Onwership" required>
+            <option value="RENT">Rent</option>
+            <option value="OWN">Own</option>
+            <option value="MORTGAGE">Mortgage</option>
+            <option value="OTHER">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="previous-loan">Previous loan on record</label>
+        <select id="previous-loan" name="Previous Loan" required>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit" id="submit-btn">Check loan eligibility</button>
+    </form>
+
+    <div class="result" id="result-box">
+      <span id="result-icon"></span>
+      <span id="result-text"></span>
+      <span class="prob" id="result-prob"></span>
+    </div>
+
+    <div class="error-banner" id="error-box" style="display:none; margin-top: 18px;"></div>
+  </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='apply.js') }}"></script>
+</body>
+</html>
