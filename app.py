@@ -16,6 +16,7 @@ model/loan_svc_model.pkl and model/model_metadata.json exist.
 
 import json
 import logging
+import os
 import pickle
 from pathlib import Path
 
@@ -201,4 +202,5 @@ def predict():
 if __name__ == "__main__":
     if not model_is_ready():
         print(f"WARNING: model not loaded ({_load_error}). Run train_model.py first.")
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=False, host="0.0.0.0", port=port)
